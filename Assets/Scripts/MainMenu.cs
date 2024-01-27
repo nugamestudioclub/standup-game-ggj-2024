@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("Working...");
+            //Debug.Log("Working...");
         }
     }
 
