@@ -7,16 +7,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Text;
-    [SerializeField]
-    private GameObject hiddenScene;
+    private GameObject MainScene;
 
     private float next = 1f;
     private bool fakeMainMenu = false;
     void Start()
     {
-        Text.SetActive(true);
-        hiddenScene.SetActive(false);
+        MainScene.SetActive(true);
     }
 
     // Update is called once per frame
@@ -24,10 +21,10 @@ public class MainMenu : MonoBehaviour
     {
         if (fakeMainMenu)
         {
-            Text.SetActive(false);
-            hiddenScene.SetActive(true);
+            MainScene.SetActive(false);
             if (next <= 0f)
             {
+                Debug.Log("Quits");
                 Quit();
             }
             else
