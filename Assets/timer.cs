@@ -6,22 +6,29 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
+    float startingTime;
     bool timerRunning = true;
+    bool warningGiven = false;
+    bool lastWarning = false;
+    Coroutine flashing;
 
-    IEnumerator BlinkGameOverText()
+    IEnumerator BlinkGameOverText(float flashtime)
     {
-        while (true)
+        //Debug.Log("Time here: " + flashtime);
+        while (remainingTime > 0f)
         {
+            //Debug.Log("In warning");
             timerText.enabled = true; // Ensure text is visible
-            yield return new WaitForSeconds(0.5f); // Display text for 0.5 seconds
+            yield return new WaitForSeconds(flashtime); // Display text for 0.5 seconds
             timerText.enabled = false; // Hide text
-            yield return new WaitForSeconds(0.5f); // Hide text for 0.5 seconds
+            yield return new WaitForSeconds(flashtime); // Hide text for 0.5 seconds
         }
     }
     
     void Start()
     {
-        StartCoroutine(BlinkGameOverText());
+        //StartCoroutine(BlinkGameOverText());
+        startingTime = remainingTime;
     }
 
     void Update()
@@ -34,7 +41,7 @@ public class Timer : MonoBehaviour
             {
                 remainingTime = 0;
                 timerRunning = false;
-                StopCoroutine(BlinkGameOverText());
+                StopCoroutine(flashing);
                 timerText.text = "<color=red>Game Over</color>"; // Set timerText to display "Game Over" in red
                 timerText.enabled = true; // Ensure the text is visible
             }
@@ -43,6 +50,27 @@ public class Timer : MonoBehaviour
                 int minutes = Mathf.FloorToInt(remainingTime / 60);
                 int seconds = Mathf.FloorToInt(remainingTime % 60);
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                if (startingTime/remainingTime >= 2f && !warningGiven)
+                {
+                    warningGiven = true;
+                    //Debug.Log("Warning");
+                    flashing = StartCoroutine(BlinkGameOverText(0.5f));
+                }
+                else if (startingTime / remainingTime >= 4f && !lastWarning)
+                {
+                    lastWarning = true;
+                    StopCoroutine(flashing);
+                    flashing = StartCoroutine(BlinkGameOverText(0.25f));
+                    //Debug.Log("i stopped");
+                }
+                if (lastWarning)
+                {
+                    timerText.text = "<color=orange>" + timerText.text + "</color>";
+                }
+                else if (warningGiven)
+                {
+                    timerText.text = "<color=yellow>" + timerText.text + "</color>";
+                }
             }
         }
     }
