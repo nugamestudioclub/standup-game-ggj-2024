@@ -22,6 +22,8 @@ public class JokeButtonManager : MonoBehaviour
 
     private List<int> alreadyPickedIdx;
 
+    public static int buttonsHit = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -168,6 +170,8 @@ public class JokeButtonManager : MonoBehaviour
 
     void HandleJokeStarted()
     {
+        buttonsHit += 1;
+
         Debug.Log("Joke started handled");
 
         //gets rid of all buttons on the screen when the joke starts

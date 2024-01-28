@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YouWin!.unity
     guid: 36eb8d5bc8187a040b372400f87ff7c5
+  - enabled: 1
+    path: Assets/Scenes/NotFunny....unity
+    guid: 856f2fd0216e9de41a32db63409c43e7
   m_configObjects: {}

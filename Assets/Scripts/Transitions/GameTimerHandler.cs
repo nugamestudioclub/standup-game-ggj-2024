@@ -21,12 +21,16 @@ public class GameTimerHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(timeUntilTransition);
         //SceneHandler.TransitionTo(winScene);
-        SceneManager.LoadScene(1);
+        if (JokeButtonManager.buttonsHit > 0) {
+            SceneManager.LoadScene(2);
+        } else {
+            SceneManager.LoadScene(1);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
