@@ -28,7 +28,6 @@ public class JokeButtonManager : MonoBehaviour
 
         alreadyPickedIdx = new List<int>();
 
-
         //add the joke started and ended events as listeners.
         foreach (GameObject jokeObject in jokeObjects)
         {

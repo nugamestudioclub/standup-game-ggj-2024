@@ -13,6 +13,8 @@ public class Joke14Script : MonoBehaviour, JokeInterface
 
     public UnityEvent onJokeCompleted { get; private set; } //required
 
+    public AudioClip[] audioClips;
+
     //You can add any number of fields to this as needed.
 
     public Joke14Script()
@@ -42,20 +44,29 @@ public class Joke14Script : MonoBehaviour, JokeInterface
 
     IEnumerator TellJoke14()
     {
-        float timeToAnimate = 1f;
+        GameObject audioLocation = new GameObject("AudioObject");
+        audioLocation.transform.position = Camera.main.transform.position;
+        AudioSource audioSource = audioLocation.AddComponent<AudioSource>();
+        audioSource.clip = audioClips[0];
+        audioSource.Play();
 
-        float elapsedTime = 0f;
+        yield return new WaitForSeconds(audioClips[0].length - 2);
 
-        while (elapsedTime < timeToAnimate)
-        {
+        audioSource.clip = audioClips[1];
+        audioSource.pitch = 0.8f;
+        audioSource.Play();
 
-            elapsedTime += Time.deltaTime;
 
-            yield return null;
-        }
+        yield return new WaitForSeconds(audioClips[1].length);
+        yield return new WaitForSeconds(1);
 
-        Debug.Log("Animation completed");
+
+
+        Destroy(audioLocation);
+
+        yield return null;
 
         onJokeCompleted.Invoke(); //required - this method should be called at the of the joke, after
     }
+
 }
