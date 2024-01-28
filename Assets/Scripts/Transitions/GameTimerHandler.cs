@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameTimerHandler : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class GameTimerHandler : MonoBehaviour
     IEnumerator WaitToExit()
     {
         yield return new WaitForSeconds(timeUntilTransition);
-        SceneHandler.TransitionTo(winScene);
+        //SceneHandler.TransitionTo(winScene);
+        SceneManager.LoadScene(1);
     }
 
     // Update is called once per frame
