@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1670,8 +1670,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Stand Up!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 22dac69b948ea49f7b304bcb5cf74a52, type: 2}
+  m_sharedMaterial: {fileID: 4404562587555773387, guid: 22dac69b948ea49f7b304bcb5cf74a52, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2114,6 +2114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fa0a882188d47699e32e1493a618f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chatter: {fileID: 1989422882}
+  music: {fileID: 1989422881}
+  Transition: {fileID: 1332839776}
+  startButton: {fileID: 1792412965}
+  InstructionsButton: {fileID: 39366190}
+  Instructions: {fileID: 1539067564}
+  animator: {fileID: 1332839780}
 --- !u!82 &1989422881
 AudioSource:
   m_ObjectHideFlags: 0
