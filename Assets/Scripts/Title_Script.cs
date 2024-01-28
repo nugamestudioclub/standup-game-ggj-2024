@@ -7,11 +7,9 @@ using UnityEngine.SceneManagement;
 public class Title_Script : MonoBehaviour
 {
     [SerializeField]
-    private float fadeInSequence = 5f;
+    private AudioSource chatter;
     [SerializeField]
-    private float next = 1f;
-    [SerializeField]
-    private AudioSource audio;
+    private AudioSource music;
     [SerializeField]
     private GameObject Transition;
     [SerializeField]
@@ -24,7 +22,8 @@ public class Title_Script : MonoBehaviour
     private Animator animator;
     private Image crossFade;
     private bool nextScene = false;
-
+    private float fadeInSequence = 5f;
+    private float next = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +32,7 @@ public class Title_Script : MonoBehaviour
         crossFade.color = new Color(0f, 0f, 0f);
         startButton.SetActive(false);
         InstructionsButton.SetActive(false);
+        chatter.Play();
     }
 
     // Update is called once per frame
@@ -47,11 +47,11 @@ public class Title_Script : MonoBehaviour
             {
                 animator.SetBool("Transition", false);
             }
-            Debug.Log(animator.GetBool("Transition"));
+            //Debug.Log(animator.GetBool("Transition"));
             if (crossFade.color == new Color(0f, 0f, 0f))
             {
-                Debug.Log("New Cross: " + crossFade.color);
-                Debug.Log("Next: " +  next);
+                //Debug.Log("New Cross: " + crossFade.color);
+                //Debug.Log("Next: " +  next);
                 if (next >= 1f)
                 {
                     Debug.Log("Next");
@@ -64,7 +64,7 @@ public class Title_Script : MonoBehaviour
             }
         }
         //Debug.Log("Fade in: " + fadeInSequence);
-        Debug.Log("Cross fade: " + crossFade.color);
+        //Debug.Log("Cross fade: " + crossFade.color);
         if (fadeInSequence > 0f)
         {
             fadeInSequence -= Time.deltaTime;
@@ -80,6 +80,11 @@ public class Title_Script : MonoBehaviour
             }
             if (crossFade.color == new Color(1f, 1f, 1f) && !Instructions.activeInHierarchy)
             {
+                if (chatter.isPlaying)
+                {
+                    chatter.Stop();
+                    music.Play();
+                }
                 startButton.SetActive(true);
                 if (next <= 0)
                 {
