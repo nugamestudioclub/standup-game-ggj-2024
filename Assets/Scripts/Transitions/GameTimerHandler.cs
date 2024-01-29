@@ -7,9 +7,7 @@ public class GameTimerHandler : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("In seconds")]
-    private float timeUntilTransition = 60;
-    [SerializeField]
-    private string winScene;
+    private float timeUntilTransition = 180;
     
     // Start is called before the first frame update
     void Start()
