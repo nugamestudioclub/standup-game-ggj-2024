@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NotFunny....unity
     guid: 856f2fd0216e9de41a32db63409c43e7
+  - enabled: 1
+    path: Assets/Scenes/Title_Screen.unity
+    guid: 62cd5f8075539409c8b9b9825014f6cf
   m_configObjects: {}

@@ -22,9 +22,9 @@ public class GameTimerHandler : MonoBehaviour
         yield return new WaitForSeconds(timeUntilTransition);
         //SceneHandler.TransitionTo(winScene);
         if (JokeButtonManager.buttonsHit > 0) {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("NotFunny...");
         } else {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("YouWin!");
         }
     }
 

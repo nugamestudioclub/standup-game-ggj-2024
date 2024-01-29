@@ -55,7 +55,7 @@ public class Title_Script : MonoBehaviour
                 if (next >= 1f)
                 {
                     Debug.Log("Next");
-                    SceneManager.LoadScene("SampleScene");
+                    SceneManager.LoadScene("Seb_Finalization");
                 }
                 else
                 {
