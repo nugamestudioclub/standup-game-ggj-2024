@@ -33,7 +33,7 @@ public class Joke7Script : MonoBehaviour, JokeInterface
 
     void Start()
     {
-        run();
+        //run();
     }
 
     //function that will run when the button for the joke is clicked
